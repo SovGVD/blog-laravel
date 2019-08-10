@@ -13,6 +13,12 @@
  - `php artisan migrate` - create DB
  - `php artisan optimize` - some optimization
 
+## Environment (.env)
+
+| Variable       | Description                                          |
+|----------------|------------------------------------------------------|
+| POSTS_PER_PAGE | Display items per page in Admin panel and Public API |
+
 ## User
 User registration disabled by default.
 

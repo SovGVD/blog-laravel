@@ -13,7 +13,7 @@ class PostTest extends TestCase
 {
 	// BUG in laravel-mongodb https://github.com/jenssegers/laravel-mongodb/issues/1334
 	// this will not work as expected and on every test
-	// mongo will be filled with 25+ fake data
+	// mongo will be filled with `posts_per_page`+10 fake data
 	use DatabaseTransactions;
 	
 	public function testPostIndex()
@@ -21,8 +21,7 @@ class PostTest extends TestCase
 		$user = factory(User::class)->create();
 		// Workaround for MongoDB bug
 		$posts = [];
-		// TODO use variable insted of hardcoded 30. Pagination hardcoded to 25 now, so any 25+ should cause pagination
-		for ($i = 0; $i < 30; $i++) {
+		for ($i = 0; $i < (config('posts.posts_per_page')+10); $i++) {
 			$posts[$i] = factory(Post::class)->create();
 		}
 		
@@ -32,7 +31,7 @@ class PostTest extends TestCase
 			->assertOk()
 			->assertSee("id=\"admin_post_create\"")	// check Create button
 			->assertSee("class=\"list-group-item list-group-item-action\"")	// check items available
-			->assertSee("pagination");	// pagination for more that 25 items
+			->assertSee("pagination");	// pagination for more than `posts_per_page` items
 		
 		// Remove posts
 		foreach ($posts as $post) {

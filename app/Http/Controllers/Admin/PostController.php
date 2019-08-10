@@ -10,7 +10,6 @@ use App\Post;
 
 class PostController extends Controller
 {
-	private $posts_per_page = 25;	// TODO settings
 	
     public function __construct()
     {
@@ -25,7 +24,7 @@ class PostController extends Controller
 			[
 				'posts' => Post::select('title', 'published')
 							->latest()
-							->paginate($this->posts_per_page)
+							->paginate(config('posts.posts_per_page'))
 			]
 		);
     }

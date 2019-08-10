@@ -8,15 +8,14 @@ use App\Post;
 
 class PostController extends APIController
 {
-	private $posts_per_page = 25;	// TODO settings
-	
+
     // Get all posts
     public function index()
     {
 		$result = Post::select('title', 'intro', 'published_ts', 'author_name', 'tags')
 			->where('published', true)
 			->latest()
-			->paginate($this->posts_per_page);
+			->paginate(config('posts.posts_per_page'));
 		return $this->success($result);
     }
 
