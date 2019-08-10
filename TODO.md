@@ -9,5 +9,6 @@
  - SEO/SMM meta tags
  - SLUG
  - Delete confirm
+ - Validation!!!
  - After form validation don't forget to update tests
  - More tests
