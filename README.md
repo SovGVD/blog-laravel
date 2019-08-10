@@ -1,5 +1,11 @@
 # Blog Laravel
 
+## Features
+ - Markdown for true developers
+ 
+## API
+ - description in progess
+
 ## Install
  - `composer install` - install php components
  - `npm install` - install nodejs components (front-end)

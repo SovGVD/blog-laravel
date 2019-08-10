@@ -9,9 +9,11 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
-Vue.prototype.$http = axios;	// use it globally in Vue components
-Vue.use(VueRouter)
 
+Vue.use(VueRouter)
+Vue.prototype.$http = axios;	// use it globally in Vue components
+var md = require('markdown-it')();
+Vue.prototype.$md = md;
 
 const routes = [
 	{

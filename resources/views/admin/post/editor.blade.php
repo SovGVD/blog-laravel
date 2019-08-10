@@ -9,7 +9,7 @@
 
 <div class="form-group">
     <label for="intro">Intro</label>
-    <textarea id="intro" class="form-control @error('intro') is-invalid @enderror" name="intro">{{ (!$errors->any() && $post) ? $post->intro : old('intro') }}</textarea>
+    <textarea id="intro" placeholder="markdown" class="form-control @error('intro') is-invalid @enderror" name="intro">{{ (!$errors->any() && $post) ? $post->intro : old('intro') }}</textarea>
 @error('intro')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
@@ -17,7 +17,7 @@
 
 <div class="form-group">
     <label for="content">Content</label>
-    <textarea id="content" rows="10" class="form-control @error('content') is-invalid @enderror" name="content">{{ (!$errors->any() && $post) ? $post->content : old('content') }}</textarea>
+    <textarea id="content" placeholder="markdown" rows="10" class="form-control @error('content') is-invalid @enderror" name="content">{{ (!$errors->any() && $post) ? $post->content : old('content') }}</textarea>
 @error('content')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
