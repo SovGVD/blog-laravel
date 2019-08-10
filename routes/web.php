@@ -17,4 +17,8 @@
 
 Auth::routes(['register' => false]);
 
-Route::get('/admin', 'AdminController@index')->name('admin');
+Route::prefix('admin')->namespace('Admin')->group(function () {
+    Route::get('/', 'IndexController@index')->name('index');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('post', 'PostController');
+});
