@@ -1,34 +1,21 @@
 <template>
 	<div>
 		<breadcrumbs :item=bcitem></breadcrumbs>
-		<div class="card" v-if="post !== false">
-			<div class="card-header">
-				<h2>{{ post.title }}</h2>
-			</div>
-			<div class="card-body" v-html="content()">
-			</div>
-			<div class="card-footer text-muted">
-				<div class="row">
-					<div class="col-sm">
-						{{ post.published_ts | moment("MMMM Do, YYYY") }} by {{ post.author_name }}
-					</div>
-					<div class="col-sm text-right">
-						{{ post.tags }}
-					</div>
-				</div>
-			</div>
-		</div>
+		<post-item v-if="post !== false" :post="post">
+		</post-item>
 	</div>
 </template>
 
 <script>
 	import breadcrumbs from './breadcrumbs';
+	import PostItem from './postitem';
+	
 	export default {
 		name: 'Post',
 		
 		props: ['id'],
 		
-		components: { breadcrumbs },
+		components: { breadcrumbs, PostItem },
 		
 		data () {
 			return {

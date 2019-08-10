@@ -13,7 +13,8 @@ class PostController extends APIController
     // Get all posts
     public function index()
     {
-		$result = Post::select('title', 'intro', 'published')
+		$result = Post::select('title', 'intro', 'published_ts', 'author_name', 'tags')
+			->where('published', true)
 			->latest()
 			->paginate($this->posts_per_page);
 		return $this->success($result);

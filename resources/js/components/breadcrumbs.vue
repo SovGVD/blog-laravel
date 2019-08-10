@@ -29,7 +29,9 @@
 		methods: {
 			initItems: function() {
 				this.items = [ this.home ];
-				this.items.push(this.item);
+				if (this.item) {
+					this.items.push(this.item);
+				}
 			},
 			
 			isLast: function(index) {
