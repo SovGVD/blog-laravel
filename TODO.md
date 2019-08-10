@@ -1,5 +1,6 @@
-# Blog Laravel TODO list
+# Blog Laravel
 
+## TODO
  - User-friendly tool to add new users as blog editor (Registration disabled by default for security reason)
  - Some extra messages, e.g. "Post successfuly added"
  - Tags to array
@@ -12,3 +13,4 @@
  - Validation!!!
  - After form validation don't forget to update tests
  - More tests
+ - API responses should be cached. Yes, it is just simple requests to MongoDB at that moment, but who knows what will happends later with that project

@@ -1,4 +1,4 @@
-# Blog
+# Blog Laravel
 
 ## Install
  - `composer install` - install php components
