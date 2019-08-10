@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePost;
 use Auth;
 use App\Post;
 
@@ -52,10 +53,8 @@ class PostController extends Controller
     }
     
     //Save new post
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-		
-		// TODO validation
 		$user = Auth::user();
 		
 		$post = new Post;
@@ -73,9 +72,8 @@ class PostController extends Controller
     }
 
     //Update current post
-    public function update(Request $request, Post $post)
+    public function update(StorePost $request, Post $post)
     {
-		// TODO validation
 		// TODO, nice copy-paste
 		$user = Auth::user();
 		

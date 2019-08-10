@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-/*Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
 // Public API for Vuu.JS based front-end client (version 1)
 Route::prefix('v1')->namespace('API\v1')->group(function() {
 	Route::get('post', 'PostController@index');

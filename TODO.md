@@ -10,7 +10,6 @@
  - SEO/SMM meta tags
  - SLUG
  - Delete confirm
- - Validation!!!
  - After form validation don't forget to update tests
  - More tests
  - API responses should be cached. Yes, it is just simple requests to MongoDB at that moment, but who knows what will happends later with that project

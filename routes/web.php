@@ -11,10 +11,6 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Auth::routes(['register' => false]);
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
