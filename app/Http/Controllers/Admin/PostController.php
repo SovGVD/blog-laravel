@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 use App\Post;
 
 class PostController extends Controller
@@ -21,7 +22,7 @@ class PostController extends Controller
         return view(
 			'admin.post.index', 
 			[
-				'posts' => Post::with('title', 'published', 'published_ts')
+				'posts' => Post::select('title', 'published')
 							->latest()
 							->paginate($this->posts_per_page)
 			]
@@ -32,7 +33,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view(
-			'admin.post.editor', 
+			'admin.post.edit', 
 			[
 				'post' => $post
 			]
@@ -40,10 +41,62 @@ class PostController extends Controller
     }
 
     // Create post
-    public function store(Post $post)
+    public function create()
     {
-		// TODO
-		// create empty post and redirect to editor
+        return view(
+			'admin.post.create', 
+			[
+				'post' => null
+			]
+		);
+    }
+    
+    //Save new post
+    public function store(Request $request)
+    {
+		
+		// TODO validation
+		$user = Auth::user();
+		
+		$post = new Post;
+		$post->title        = $request->input('title');
+		$post->intro        = $request->input('intro');
+		$post->content      = $request->input('content');
+		$post->tags         = $request->input('tags');	// TODO, separate by comma, unique, sort, etc
+		$post->author_id    = $request->id;
+		$post->author_name  = $request->name;	//TODO belongTo between MySQL and MongoDB?
+		$post->published    = $request->input('published')?true:false;
+		$post->published_ts = $request->input('published')?time():0;	// Carbon? DATETIME?
+		$post->save();
+		
+		return redirect()->route('post.show', $post);
     }
 
+    //Update current post
+    public function update(Request $request, Post $post)
+    {
+		// TODO validation
+		// TODO, nice copy-paste
+		$user = Auth::user();
+		
+		$post->title        = $request->input('title');
+		$post->intro        = $request->input('intro');
+		$post->content      = $request->input('content');
+		$post->tags         = $request->input('tags');	// TODO, separate by comma, unique, sort, etc
+		$post->author_id    = $request->id;
+		$post->author_name  = $request->name;
+		$post->published    = $request->input('published')?true:false;
+		$post->published_ts = $request->input('published')?time():0;	// Carbon? DATETIME?
+		$post->save();
+		
+		return redirect()->route('post.show', $post);
+    }
+
+	//Remove current post
+    public function destroy(Post $post)
+    {
+		$post->delete();
+		
+		return redirect()->route('post.index');
+    }
 }
