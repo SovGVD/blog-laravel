@@ -13,6 +13,10 @@
 
 Auth::routes(['register' => false]);
 
+Route::get('/post/{ID}', 'IndexController@index');
+Route::get('/{page}', 'IndexController@index');
+Route::get('/', 'IndexController@index');
+
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/', 'IndexController@index')->name('index');
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
