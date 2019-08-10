@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 text-right">
-			<a class="btn btn-primary" href="{{ route('post.create') }}">Add new post</a>
+			<a class="btn btn-primary" href="{{ route('post.create') }}" id="admin_post_create">Add new post</a>
         </div>
     </div>
     

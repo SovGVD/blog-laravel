@@ -7,7 +7,7 @@
 			<form method="POST" action="{{ route('post.update', $post->id) }}">
 				@method('PUT')
 				@include('admin/post/editor')
-				<button type="submit" class="btn btn-primary">Save</button>
+				<button type="submit" class="btn btn-primary" id="admin_post_save_button">Save</button>
 			</form>
 		</div>
 	</div>
@@ -16,7 +16,7 @@
 			<form method="POST" action="{{ route('post.destroy', $post->id) }}">
 				@csrf
 				@method('DELETE')
-				<button type="submit" class="btn btn-danger">Delete</button>
+				<button type="submit" class="btn btn-danger" id="admin_post_delete_button">Delete</button>
 			</form>
         </div>
     </div>

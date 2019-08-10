@@ -23,3 +23,8 @@ exit
 ```
 
 CLEAR/REMOVE tinker history file `~/.config/psysh/psysh_history` after that.
+
+##Known bugs
+
+###Tests
+ - Tests will not rollback fake data, because of Laravel MongoDB [bug](https://github.com/jenssegers/laravel-mongodb/issues/1334), some workarond applied
