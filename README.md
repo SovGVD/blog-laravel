@@ -36,6 +36,10 @@ exit
 
 CLEAR/REMOVE tinker history file `~/.config/psysh/psysh_history` after that.
 
+##Authorization and Admin panel
+Admin panel entry point hidden from user intreface and available via link `/admin/`
+
+ 
 ## Known bugs
 
 ### Tests

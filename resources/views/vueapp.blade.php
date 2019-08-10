@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.vueapp')
 
 @section('content')
 <router-view></router-view>

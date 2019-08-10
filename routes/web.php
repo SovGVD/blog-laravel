@@ -13,12 +13,13 @@
 
 Auth::routes(['register' => false]);
 
+Route::prefix('admin')->namespace('Admin')->group(function () {
+    Route::get('/', 'DashboardController@index')->name('index');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('post', 'PostController');
+});
+
 Route::get('/post/{ID}', 'IndexController@index');
 Route::get('/{page}', 'IndexController@index');
 Route::get('/', 'IndexController@index');
 
-Route::prefix('admin')->namespace('Admin')->group(function () {
-    Route::get('/', 'IndexController@index')->name('index');
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-    Route::resource('post', 'PostController');
-});
