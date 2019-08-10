@@ -1,16 +1,18 @@
 <template>
 	<div>
+		<breadcrumbs :item=bcitem></breadcrumbs>
 		<div class="card" v-if="post !== false">
-			<div class="card-body">
+			<div class="card-header">
 				<h2>{{ post.title }}</h2>
-				<div v-html="content()"></div>
+			</div>
+			<div class="card-body" v-html="content()">
 			</div>
 			<div class="card-footer text-muted">
 				<div class="row">
 					<div class="col-sm">
-						{{ post.author_name }} at {{ post.published_ts }}
+						{{ post.published_ts | moment("MMMM Do, YYYY") }} by {{ post.author_name }}
 					</div>
-					<div class="col-sm">
+					<div class="col-sm text-right">
 						{{ post.tags }}
 					</div>
 				</div>
@@ -20,14 +22,18 @@
 </template>
 
 <script>
+	import breadcrumbs from './breadcrumbs';
 	export default {
 		name: 'Post',
 		
 		props: ['id'],
 		
+		components: { breadcrumbs },
+		
 		data () {
 			return {
-				post: false
+				post: false,
+				bcitem: { url: "", title: "" }
 			}
 		},
 		
@@ -44,6 +50,7 @@
 				this.$http.get("/api/v1/post/" + this.id)
 					.then(response => {
 						this.post = response.data.message;
+						this.bcitem.title = this.post.title;
 						console.log("POST", this.post);
 					})
 					.catch(error => {

@@ -14,6 +14,7 @@ Vue.use(VueRouter)
 Vue.prototype.$http = axios;	// use it globally in Vue components
 var md = require('markdown-it')();
 Vue.prototype.$md = md;
+Vue.use(require('vue-moment'));
 
 const routes = [
 	{
