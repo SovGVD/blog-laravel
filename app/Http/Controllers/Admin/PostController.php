@@ -62,7 +62,7 @@ class PostController extends Controller
 		$post->title        = $request->input('title');
 		$post->intro        = $request->input('intro');
 		$post->content      = $request->input('content');
-		$post->tags         = $request->input('tags');	// TODO, separate by comma, unique, sort, etc
+		$post->tags         = $request->input('tags');	// TODO, separate by comma to array, unique, sort, etc
 		$post->author_id    = $request->id;
 		$post->author_name  = $request->name;	//TODO belongTo between MySQL and MongoDB?
 		$post->published    = $request->input('published')?true:false;
@@ -82,11 +82,11 @@ class PostController extends Controller
 		$post->title        = $request->input('title');
 		$post->intro        = $request->input('intro');
 		$post->content      = $request->input('content');
-		$post->tags         = $request->input('tags');	// TODO, separate by comma, unique, sort, etc
+		$post->tags         = $request->input('tags');
 		$post->author_id    = $request->id;
 		$post->author_name  = $request->name;
 		$post->published    = $request->input('published')?true:false;
-		$post->published_ts = $request->input('published')?time():0;	// Carbon? DATETIME?
+		$post->published_ts = $request->input('published')?time():0;
 		$post->save();
 		
 		return redirect()->route('post.show', $post);
