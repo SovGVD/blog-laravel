@@ -2,7 +2,7 @@
 	<div class="card mb-4">
 		<div class="card-header">
 			<h2 v-if="full">{{ post.title }}</h2>
-			<router-link v-else :to=postUrl()>{{ post.title }}</router-link>
+			<router-link v-else :to="postUrl()">{{ post.title }}</router-link>
 		</div>
 		<div class="card-body" v-html="content()">
 		</div>
@@ -27,7 +27,8 @@
 		
 		data () {
 		return {
-				full: false
+				full: false,
+				path: "/post/",
 			}
 		},
 		
@@ -43,7 +44,7 @@
 			},
 			
 			postUrl: function () {
-				return "/post/" + this.post._id;
+				return this.path + this.post._id;
 			},
 			
 			content: function() {

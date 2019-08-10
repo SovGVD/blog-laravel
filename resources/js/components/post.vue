@@ -1,14 +1,13 @@
 <template>
 	<div>
 		<breadcrumbs :item=bcitem></breadcrumbs>
-		<post-item v-if="post !== false" :post="post">
-		</post-item>
+		<post-item v-if="post !== false" :post="post"></post-item>
 	</div>
 </template>
 
 <script>
-	import breadcrumbs from './breadcrumbs';
-	import PostItem from './postitem';
+	import breadcrumbs from './items/breadcrumbs';
+	import PostItem from './items/postitem';
 	
 	export default {
 		name: 'Post',
@@ -24,7 +23,7 @@
 			}
 		},
 		
-		mounted() {
+		created() {
 			this.fetchPost();
 		},
 		
