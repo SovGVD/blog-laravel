@@ -12,4 +12,4 @@
  - After form validation don't forget to update tests
  - More tests
  - API responses should be cached. Yes, it is just simple requests to MongoDB at that moment, but who knows what will happends later with that project
- - Convert all blog post with tags-as-string to tags-as-array
+ - Convert all blog post with tags-as-string to tags-as-array and remove fallbacks (fron-end and back-end)

@@ -10,7 +10,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'title' => $faker->sentence(),
         'intro' => $faker->text(50),
         'content' => $faker->text(200),
-        'tags' => $faker->words(5, true),	// TODO use array
+        'tags' => $faker->words(5),
         'author_id' => $faker->randomDigitNotNull(),
         'author_name' => $faker->name,
         'published' => $faker->boolean,
