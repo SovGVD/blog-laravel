@@ -19,7 +19,9 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::resource('post', 'PostController');
 });
 
+// TODO meta tags for SEO/SMM
 Route::get('/post/{ID}', 'IndexController@index');
+Route::get('/tag/{tag}', 'IndexController@index');
 Route::get('/{page}', 'IndexController@index');
 Route::get('/', 'IndexController@index');
 

@@ -12,7 +12,7 @@
 					{{ post.published_ts | moment("MMMM Do, YYYY") }} by {{ post.author_name }}
 				</div>
 				<div class="col-sm text-right">
-					{{ post.tags }}
+					<tags-line :tags=post.tags></tags-line>
 				</div>
 			</div>
 		</div>
@@ -20,10 +20,14 @@
 </template>
 
 <script>
+	import TagsLine from './tagsline';
+	
 	export default {
 		name: 'PostItem',
 		
 		props: ['post'],
+		
+		components: { TagsLine },
 		
 		data () {
 		return {

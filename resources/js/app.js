@@ -24,6 +24,12 @@ const routes = [
 		component: () => import('./components/post')
 	},
 	{
+		path: "/tag/:tag",
+		name: "Search.Tag",
+		props: true,
+		component: () => import('./components/search.tag')
+	},
+	{
 		path: "/:page",
 		name: "IndexPage",
 		props: true,
