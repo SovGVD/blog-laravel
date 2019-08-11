@@ -14,7 +14,7 @@ class PostController extends APIController
     {
 		$result = Post::select('title', 'intro', 'published_ts', 'author_name', 'tags')
 			->where('published', true)
-			->latest()
+			->orderBy('published_ts', 'DESC')
 			->paginate(config('posts.posts_per_page'));
 		return $this->success($result);
     }
