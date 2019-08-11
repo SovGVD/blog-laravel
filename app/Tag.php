@@ -22,7 +22,7 @@ class Tag
 		return $tags;
 	}
 	
-	private static function normalizeTag($tag) {
+	public static function normalizeTag($tag) {
 		$tag = mb_strtolower(trim($tag));
 		return mb_strlen($tag)>2?$tag:false;
 	}
