@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StorePost;
 use Auth;
 use App\Post;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -60,7 +61,7 @@ class PostController extends Controller
 		$post->title        = $request->input('title');
 		$post->intro        = $request->input('intro');
 		$post->content      = $request->input('content');
-		$post->tags         = $request->input('tags');	// TODO, separate by comma to array, unique, sort, etc
+		$post->tags         = Tag::normalize($request->input('tags'));
 		$post->author_id    = $user->id;
 		$post->author_name  = $user->name;	//TODO belongTo between MySQL and MongoDB?
 		$post->published    = $request->input('published')?true:false;
@@ -79,7 +80,7 @@ class PostController extends Controller
 		$post->title        = $request->input('title');
 		$post->intro        = $request->input('intro');
 		$post->content      = $request->input('content');
-		$post->tags         = $request->input('tags');
+		$post->tags         = Tag::normalize($request->input('tags'));
 		$post->author_id    = $user->id;
 		$post->author_name  = $user->name;
 		$post->published    = $request->input('published')?true:false;

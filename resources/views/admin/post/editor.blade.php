@@ -25,7 +25,12 @@
 
 <div class="form-group">
     <label for="tags">Tags (comma separated)</label>
+    @if($post && is_string($post->tags))
+    {{-- fallback to previous version of tags as string --}}
     <input id="tags" class="form-control" name="tags" value="{{ (!$errors->any() && $post) ? $post->tags : old('tags') }}">
+    @else
+    <input id="tags" class="form-control" name="tags" value="{{ (!$errors->any() && $post) ? implode(', ', $post->tags) : old('tags') }}">
+   @endif
 </div>
 
 <div class="form-check">
